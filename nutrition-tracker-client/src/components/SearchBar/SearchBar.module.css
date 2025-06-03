@@ -1,0 +1,36 @@
+.searchContainer {
+    margin-bottom: 10px;
+    width: 100%;
+    align-content: center;
+}
+
+.searchInput {
+    width: 200px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.searchResultContainer {
+    position: absolute;
+    width: 200;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    max-height: 200;
+    overflow-y: auto; /*scroll maybe?*/
+    background-color: white;
+    text-align: left;
+    z-index: 1000;
+}
+
+.result {
+    display: block;
+    padding: 3px;
+}
+
+.result:hover {
+    background-color: hsl(240, 100%, 60%);
+    color: white;
+    cursor: pointer;
+}

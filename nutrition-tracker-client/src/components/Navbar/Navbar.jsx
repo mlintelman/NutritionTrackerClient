@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png'
 export default function Navbar() {
     return (
         <nav className={styles.navbar}>
-            <NavLink to="/home" className={styles.siteTitle}>
+            <NavLink to="/" className={styles.siteTitle}>
                 <img src={logo} className={styles.logo} alt="Logo" />
             </NavLink>
             <ul>
