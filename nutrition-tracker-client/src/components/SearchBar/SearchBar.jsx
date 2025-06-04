@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import styles from './SearchBar.module.css'
+import API_BASE_URL from '../../config'
 
 // Search bar that makes API calls, optimized with debouncing and caching
-export default function SearchBar({ onSelect }) {
+// things to improve: arrow and enter keys, better styling
+export default function SearchBar({ onSelect, clearTrigger }) {
     const [search, setSearch] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [showResults, setShowResults] = useState(false)
@@ -34,7 +36,8 @@ export default function SearchBar({ onSelect }) {
         }
         console.log("API CALL ", search)
         // API call
-        const response = await fetch(`https://localhost:7284/api/FoodItems/search?query=${search}`)
+        //const response = await fetch(`https://localhost:7284/api/FoodItems/search?query=${search}`)
+        const response = await fetch(`${API_BASE_URL}FoodItems/search?query=${search}`)
         // Convert to json
         const data = await response.json()
         // Set search results to response data
@@ -51,6 +54,12 @@ export default function SearchBar({ onSelect }) {
         }
     }
 
+    // Trigger to reset the search
+    useEffect(() => {
+        setSearch("");
+        setSearchResults([]);
+    }, [clearTrigger])
+
 
     // Search foods when the search dependency is changed
     useEffect(() => {
@@ -63,7 +72,7 @@ export default function SearchBar({ onSelect }) {
         const timer = setTimeout(fetchFoodItems, 300);
         // Clear the timeout to clean up resources
         return () => clearTimeout(timer);
-    }, [search]);
+    }, [search])
 
 
     return (
@@ -72,6 +81,7 @@ export default function SearchBar({ onSelect }) {
                 className={styles.searchInput}
                 id='searchInput'
                 type='text'
+                placeholder='Search food...'
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 onFocus={() => setShowResults(true)}

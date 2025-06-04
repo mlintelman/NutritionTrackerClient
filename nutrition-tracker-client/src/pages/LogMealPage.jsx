@@ -1,4 +1,3 @@
-import FoodSearch from "../components/FoodSearch/FoodSearch"
 import MealForm from "../components/MealForm/MealForm"
 
 export default function LogMealPage(){
