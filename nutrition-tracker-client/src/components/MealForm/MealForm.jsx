@@ -212,18 +212,18 @@ export default function MealForm() {
                         <p><strong>Total Carbs:</strong> {nutrientTotals.carbs.toFixed(1)} g</p>
                         <p><strong>Total Fat:</strong> {nutrientTotals.fat.toFixed(1)} g</p>
                     </div>
-                    <input
+                    <span>Meal Name:<textarea
                         type='text'
                         id='inputName'
                         className={styles.inputName}
                         placeholder='Enter meal name here...'
-                    /><br/>
-                    <input
+                    /></span><br/>
+                    <span>Meal Notes:<textarea
                         type='text'
                         id='inputNotes'
                         className={styles.inputNotes}
                         placeholder='Enter meal notes here...'
-                    /><br/>
+                    /></span><br/>
                 </div>
             )}
 

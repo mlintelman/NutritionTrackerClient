@@ -44,3 +44,45 @@ button {
 .mealInfoListItem{
     margin-top: 3px;
 }
+
+.mealInfo {
+    background-color: white;
+    padding: 10px;
+    border: 3px black solid;
+    border-radius: 10px;
+}
+
+.mealInfo input {
+    width: 200px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.mealInfo textarea {
+    width: 200px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 5px;
+    resize: vertical; /* Optional: lets the user resize vertically */
+    box-sizing: border-box;
+    margin-left: 5px;
+}
+
+.inputName {
+    height: 30px;
+    overflow: auto;         /* Allows scroll if needed */
+    vertical-align: top;    /* Doesn't hurt to include for alignment */
+    white-space: pre-wrap;  /* Ensures line breaks are respected */
+}
+
+.inputNotes {
+    height: 100px;
+    overflow: auto;         /* Allows scroll if needed */
+    vertical-align: top;    /* Doesn't hurt to include for alignment */
+    white-space: pre-wrap;  /* Ensures line breaks are respected */
+}
