@@ -27,16 +27,16 @@ export default function MealForm() {
     // When the form is submitted, process it
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("Hi")
+        //console.log("Submit button clicked")
         processMealForm()
     }
 
     // When the add food button is clicked, add the food item to meal items
     const addFood = () => {
         const newItem = {
-            food_item_id: selectedFood.id,
+            foodItemId: selectedFood.id,
             name: selectedFood.name,
-            serving_size_grams: selectedFood.serving_size_grams * servings,
+            servingSizeGrams: selectedFood.servingSizeGrams * servings,
             servings: servings,
             calories: selectedFood.calories * servings,
             protein: selectedFood.protein * servings,
@@ -46,7 +46,7 @@ export default function MealForm() {
 
         // Replace if already added
         setMealItems(prev => {
-            const filtered = prev.filter(item => item.food_item_id !== selectedFood.id)
+            const filtered = prev.filter(item => item.foodItemId !== selectedFood.id)
             return [...filtered, newItem]
         })
     }
@@ -69,8 +69,8 @@ export default function MealForm() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    user_id: 1, // Temporary user
-                    date_time: new Date().toISOString(),
+                    userId: 1, // Temporary user
+                    dateTime: new Date().toISOString(),
                     name: inputName.value,
                     notes: inputNotes.value
                 })
@@ -80,10 +80,10 @@ export default function MealForm() {
             const mealId = meal.id;
 
             const mealItemsPayload = mealItems.map(item => ({
-                meal_id: mealId,
-                food_item_id: item.food_item_id,
+                mealId: mealId,
+                foodItemId: item.foodItemId,
                 name: item.name,
-                serving_size_grams: item.serving_size_grams,
+                servingSizeGrams: item.servingSizeGrams,
                 servings: item.servings,
                 calories: item.calories,
                 protein: item.protein,
@@ -124,7 +124,7 @@ export default function MealForm() {
 
         // Then, add food id and servings as a key value pair
 
-        const isDuplicate = mealItems.some(item => item.food_item_id === selectedFood.id)
+        const isDuplicate = mealItems.some(item => item.foodItemId === selectedFood.id)
         // If the food item has already been added to this meal,
         if (isDuplicate) {
             // Confirm with the user they want to override
@@ -165,7 +165,7 @@ export default function MealForm() {
                 <div>
                     <p><strong>Food:</strong> {selectedFood.name}</p>
                     <p><strong>Description:</strong> {selectedFood.description}</p>
-                    <p><strong>Your Serving Size:</strong> {(selectedFood.serving_size_grams*servings).toFixed(1)}g</p>
+                    <p><strong>Your Serving Size:</strong> {(selectedFood.servingSizeGrams*servings).toFixed(1)}g</p>
                     <p><strong>Calories:</strong> {(selectedFood.calories*servings).toFixed(1)} kcal</p>
                     <p><strong>Protein:</strong> {(selectedFood.protein*servings).toFixed(1)}g</p>
                     <p><strong>Carbs:</strong> {(selectedFood.carbs*servings).toFixed(1)}g</p>

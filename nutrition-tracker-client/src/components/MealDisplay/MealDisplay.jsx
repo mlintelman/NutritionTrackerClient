@@ -14,7 +14,7 @@ export default function MealDisplay() {
     // When the page is loaded, fetch the meals
     useEffect(() => {
         //getUserMeals(1)
-        console.log(selectedDate)
+        //console.log(selectedDate)
         getUserMealsByDate(1, selectedDate)
     }, [selectedDate])
 
@@ -29,9 +29,9 @@ export default function MealDisplay() {
     // Get all the user's meals based on their user id
     const getUserMeals = async (user_id) => {
         try {
-            const response = await fetch(`${API_BASE_URL}Meals/${user_id}/meals`)
+            const response = await fetch(`${API_BASE_URL}Meals/user/${user_id}`)
             const data = await response.json()
-            console.log(data)
+            //console.log(data)
             setMeals(Array.isArray(data) ? data : [])
         } catch (err) {
             console.error("Failed to fetch meals:", err)
@@ -43,11 +43,11 @@ export default function MealDisplay() {
     const getUserMealsByDate = async (userId, date) => {
         try {
             const formattedDate = format(date, 'yyyy-MM-dd')
-            console.log(formattedDate)
-            const response = await fetch(`${API_BASE_URL}Meals/${userId}/${formattedDate}/meals`)
+            //console.log(formattedDate)
+            const response = await fetch(`${API_BASE_URL}Meals/user/${userId}/${formattedDate}`)
             const data = await response.json()
             setMeals(Array.isArray(data) ? data : [])
-            console.log(meals)
+            //console.log(meals)
         }
         catch (err) {
             console.error("Failed to fetch meals:", err)
@@ -64,6 +64,10 @@ export default function MealDisplay() {
         const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         // Return the formatted date converted to the time zone
         return formatInTimeZone(utcDateTime, userTimeZone, "MM/dd/yyyy h:mm a")
+    }
+
+    const handleClickMeal = (mealId) => {
+        console.log(mealId)
     }
 
 
@@ -84,8 +88,10 @@ export default function MealDisplay() {
             ) : (
                 <ul>
                     {meals.map((meal) => (
-                        <li key={meal.id}>
-                            <strong>{meal.name}</strong>: {formatDateTime(meal.date_time)}
+                        <li 
+                            key={meal.id}
+                            onClick={() => handleClickMeal(meal.id)}>
+                            <strong>{meal.name}</strong>: {formatDateTime(meal.dateTime)}
                         </li>
                     ))}
                 </ul>

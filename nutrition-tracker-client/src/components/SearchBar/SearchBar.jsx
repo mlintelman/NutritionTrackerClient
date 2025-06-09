@@ -10,20 +10,6 @@ export default function SearchBar({ onSelect, clearTrigger }) {
     const [showResults, setShowResults] = useState(false)
     const [cache, setCache] = useState({})
 
-    /*const searchFoodItems = async (searchTerm) => {
-        if (!searchTerm) {
-            setFoods([]);
-            return;
-        }
-        try {
-            const response = await fetch(`https://localhost:7284/api/FoodItems/search?query=${searchTerm}`)
-            const data = await response.json()
-            setFoods(data)
-        } catch (err) {
-            console.log("Search error:", err)
-        }
-    }*/
-
     // Make API call and update search results with response data
     const fetchFoodItems = async () => {
         //  Check if the search is in the cache already
@@ -104,31 +90,3 @@ export default function SearchBar({ onSelect, clearTrigger }) {
         </div>
     )
 }
-    /*return (
-        <section className='search_section'>
-            <div className='search_input_div'>
-                <input
-                    type='text'
-                    className='search_input'
-                    placeholder='Search...'
-                    autoComplete='off'
-                    onChange={handleChange}
-                    value={search}
-                />
-            </div>
-            <div className='search_result'>
-                <ul className={styles.dropdown}>
-                    {searchData.map(item => (
-                        <li
-                            key={item.id}
-                            onMouseDown={() => handleSelect(item)}
-                            className={styles.dropdownItem}
-                        >
-                            {item.name}
-                        </li>
-                    ))}
-                </ul>               
-            </div>
-        </section>
-    );
-}*/
