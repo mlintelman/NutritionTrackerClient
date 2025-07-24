@@ -1,22 +1,120 @@
+/* Container for the whole meal display */
 .mealDisplayContainer {
-    display: inline-block;
-    border: 3px black solid;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+/* Date Navigation Controls */
+.dateControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dateControlsButton {
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: hsl(0, 0%, 80%);
+  border: 2px solid black;
+  border-radius: 6px;
+  color: black;
+}
+
+/* Custom styling for react-datepicker input */
+.customDatePicker {
+  font-size: 1.2rem;
+  padding: 0.4rem 0.6rem;
+  width: auto;
+  min-width: 0;
+  display: inline-block;
+  box-sizing: content-box;
+}
+
+/* List container */
+.mealListContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Main meal list */
+.mealListContainer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+/* Individual meal items */
+.mealList li {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  background-color: #f9f9f9;
+}
+
+/* Nested meal items list inside a meal */
+.mealItemsList {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.mealItemsList li{
+    border: 3px solid hsl(0, 0%, 80%);
+    padding: 0.5rem;
+}
+
+.mealItemsList p.nutrient {
+    font-size: 1rem;
+}
+
+.nutrientList {
     border-radius: 10px;
 }
-
-.mealDisplayContainer ul {
-    display: inline-block;
+.nutrientList li {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem
 }
 
-.mealDisplayContainer li {
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    padding: 5px;
+
+/* Paragraph inside nested meal items */
+.mealListContainer li p {
+  font-size: 1.25rem;
+  margin: 5px 0;
 }
 
-.mealDisplayContainer li:hover {
-    background-color: hsl(0, 0%, 54%);
-    cursor: pointer;
+/* Buttons inside meal items */
+.mealListContainer li button {
+  color: black;
+  margin-top: 8px;
+  padding: 4px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: hsl(0, 0%, 90%);
+  border: 2px solid black;
+  border-radius: 5px;
 }
+
+/* Optional active state for meal items (commented out) */
+/*
+.mealListContainer li.active {
+  border-color: hsl(0, 0%, 60%);
+  background-color: #eee;
+}
+*/
